@@ -50,6 +50,10 @@ urlpatterns = [
     
 
 
+#change password
+
+path('password/',PasswordChangeView.as_view(),name='change_password'),
+
 
     #reset password
     path('password_reset/',auth_views.PasswordResetView.as_view(),name='password_reset'),
