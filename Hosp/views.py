@@ -2,9 +2,12 @@ from django.shortcuts import render,redirect
 from django.contrib.auth.models import User,Group
 from .models import *
 from django.contrib.auth import authenticate,logout,login
+from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth.views import PasswordChangeView
 from django.http import HttpResponse
 from django.utils import timezone
-import sweetify
+from django.urls import reverse_lazy
+
 # Create your views here.
 from django.http import HttpResponse
 def index(request):
@@ -122,7 +125,15 @@ def patientdash(request):
 		doctor_details=Doctor.objects.all().filter(username=request.user)
 		d={'doctor_details':doctor_details}
 		return render(request,'doctorhome.html',d)
+
 	
+
+class PasswordChangeView(PasswordChangeView):
+	form_class = PasswordChangeForm
+	template_name='registration/change-password.html'
+	success_url = reverse_lazy('patientdash')
+
+
 def patientprofile(request):
 	
 	
