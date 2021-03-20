@@ -31,13 +31,14 @@ SWEETIFY_SWEETALERT_LIBRARY = 'sweetalert2'
 # Application definition
 
 INSTALLED_APPS = [
+    'Hosp',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'Hosp',
+    
     'sweetify',
 ]
 
@@ -122,3 +123,5 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 LOGIN_URL = '/Multicare/login'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
