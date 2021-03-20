@@ -17,6 +17,9 @@ from django.contrib import admin
 from django.urls import path
 from Hosp.views import *
 from Hosp import views
+from django.contrib.auth import views as auth_views
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index,name='index'),
@@ -44,4 +47,16 @@ urlpatterns = [
     path('prescription<int:pid>/',add_prescrip,name='add_prescrip'),
     path('view_prescription<int:pid>/',view_prescrip,name='view_prescrip'),
     path('temp/',temp,name='temp'),
-]
+    
+
+
+
+    #reset password
+    path('password_reset/',auth_views.PasswordResetView.as_view(),name='password_reset'),
+
+    path('password_reset/done/',auth_views.PasswordResetDoneView.as_view(),name='password_reset_done'),
+
+    path('reset/<uidb64>/<token>/',auth_views.PasswordResetConfirmView.as_view(),name='password_reset_confirm'),
+
+    path('reset/done/',auth_views.PasswordResetCompleteView.as_view(),name='password_reset_complete'),
+    ]
