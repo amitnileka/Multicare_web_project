@@ -47,7 +47,7 @@ urlpatterns = [
     path('prescription<int:pid>/',add_prescrip,name='add_prescrip'),
     path('view_prescription<int:pid>/',view_prescrip,name='view_prescrip'),
     path('temp/',temp,name='temp'),
-    
+    path('updatepatient/',updateprofile,name='updateprofile'),
 
 
 #change password
