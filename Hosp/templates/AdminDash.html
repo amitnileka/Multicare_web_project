@@ -1347,15 +1347,14 @@ main {
                                 </tr>
                               </thead>
                               <tbody>
-                                  {% for i in stu %}
+                                  {% for i in appointmentlist %}
                                 <tr>
                                   <td>{{i.doctorname}}</td>
-                                  <td>{{i.gender}}</td>
-                                  <td>{{i.appointmentdate}}</td>
+                                  <td>{{i.username}}</td>
                                   <td>{{i.appointmenttime}}</td>
                                   <td>{{i.symptoms}}</td>
-                                  <td>{{i.status}}</td>
-                                  <td><a href="{% url 'patient_delete_appointment' i.id %} " onclick="return confirm('Are you sure you want to delete?')" class="btn btn-danger pres">Delete</a></td>
+                                  
+          
                               </tr>
                                 {% endfor %}
                               </tbody>
