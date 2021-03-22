@@ -317,6 +317,7 @@ def adminhome(request):
 	patient=Patient.objects.all()
 	patient_count=Patient.objects.all().count()
 	appointment=Appointment.objects.filter(appointmentdate__gte=timezone.now(),status=True).count()
+	appointmentlist=Appointment.objects.filter(appointmentdate=timezone.now(),status=True)
 	total=patient_count+doc_count
 	mydict={
 		'doc': doc,
@@ -324,7 +325,8 @@ def adminhome(request):
 		'patient': patient,
 		'patient_count':patient_count,
 		'appointment': appointment,
-		'total':total
+		'total':total,
+		'appointmentlist':appointmentlist
 	}
 	return render(request,'adminDash.html',context=mydict)
 
