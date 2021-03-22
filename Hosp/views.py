@@ -133,6 +133,33 @@ class PasswordChangeView(PasswordChangeView):
 	template_name='registration/change-password.html'
 	success_url = reverse_lazy('patientdash')
 
+def updateprofile(request):
+	if not request.user.is_active:
+		return redirect('loginpage')
+	error = ""
+	pat = Patient.objects.all().filter(username = request.user)
+	g = request.user.groups.all()[0].name
+	if g == 'Patient':
+		if request.method == 'POST':
+			
+			name = request.POST['name']
+			email = request.POST['email']
+			gender = request.POST['gender']
+			phonenumber = request.POST['phonenumber']
+			username = request.POST['username']
+			bloodgroup = request.POST['bloodgroup']
+			try:
+				Patient.objects.filter(username = request.user).update(name=name,email=email,gender=gender,phonenumber=phonenumber,username=username,bloodgroup=bloodgroup)
+					#print(user)
+				error = "no"
+			
+				
+			except Exception as e:
+				error = "yes"
+				#print("Error:",e)
+	d = {'error' : error,'pat': pat}
+	#print(error)
+	return render(request,'updatepatient.html',d)
 
 def patientprofile(request):
 	
