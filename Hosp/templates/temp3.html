@@ -25,8 +25,8 @@ header{
   background: #4b086d;
   padding: 35px;
   width: calc(100% - 0%);
+  height: 0px;
   top: 0;
-  height: 30px;
 }
 
 .left_area h3{
@@ -35,30 +35,13 @@ header{
   text-transform: uppercase;
   font-size: 22px;
   font-weight: 900;
+  margin-left: -15px;
 }
 
 .left_area span{
   color: #19B3D3;
 }
 
-.logout_btn{
-  padding: 5px;
-  background: #19B3D3;
-  text-decoration: none;
-  float: right;
-  margin-top: -40px;
-  margin-right: 40px;
-  border-radius: 2px;
-  font-size: 15px;
-  font-weight: 600;
-  color: #fff;
-  transition: 0.5s;
-  transition-property: background;
-}
-
-.logout_btn:hover{
-  background: #0B87A6;
-}
 
 .sidebar{
   z-index: 1;
@@ -122,7 +105,7 @@ label #sidebar_btn{
   cursor: pointer;
   left: 300px;
   font-size: 20px;
-  margin: 5px 0;
+  margin: -10px 0;
   transition: 0.5s;
   transition-property: color;
 }
@@ -180,6 +163,99 @@ label #sidebar_btn:hover{
   font-size: 14px;
   opacity: 0.8;
 }
+
+/* Logout btn */
+
+.navbar .nav_right > ul{
+	display: flex;
+	align-items: center;
+}
+
+.navbar .nav_right ul li.nr_li{
+	margin-left: 1085px;
+	cursor: pointer;
+	color: #fff;
+	font-size: 15px;
+	position: relative;
+  margin-top: -62px;
+}
+
+.navbar .nav_right ul li.nr_li:hover {
+    color: #cefffc;
+}
+
+
+.navbar .dd_menu {
+    position: absolute;
+    right: 15px;
+    top: 47px;
+    display: flex;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0px 0px 3px rgba(0,0,0,0.25);
+    display: none;
+}
+
+.navbar .dd_menu .dd_left{
+	background: #74ded8;
+	padding: 11px 16px;
+	border-top-left-radius: 10px;
+	border-bottom-left-radius: 10px;
+  width: 20px;
+
+}
+
+.navbar .dd_menu .dd_left li{
+	color: #fff;
+  padding: 15px 20px;
+  margin-left: -60px;
+
+}
+.navbar .dd_menu .dd_right li{
+  padding: 10px 15px;
+  margin-left: -20px;
+}
+
+.navbar .dd_menu .dd_right{
+	padding: 10px 15px;
+}
+
+.navbar .dd_menu li{
+	margin-bottom: 10px;
+	color: #868686;
+}
+
+.navbar .dd_menu:before{
+	content: "";
+	position: absolute;
+	top: -20px;
+	right: 30px;
+	border: 10px solid;
+	border-color: transparent transparent #fff transparent;
+}
+
+.navbar .dd_main.active .dd_menu{
+	display: flex;
+}
+
+
+
+
+.logout_btn{
+  padding: 5px;
+  background: #19B3D3;
+  text-decoration: none;
+  float: right;
+  margin-top: -5px;
+  margin-right: 40px;
+  border-radius: 2px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #fff;
+  transition: 0.5s;
+  transition-property: background;
+}
+
 
 /* Responsive CSS */
 
@@ -272,6 +348,7 @@ label #sidebar_btn:hover{
     
     <input type="checkbox" id="check">
     <!--header area start-->
+    <div class="navbar">
     <header>
       <label for="check">
         <i class="fas fa-bars" id="sidebar_btn"></i>
@@ -279,10 +356,35 @@ label #sidebar_btn:hover{
       <div class="left_area">
         <h3>Aboli <span>Hospital</span></h3>
       </div>
-      <div class="right_area">
-        <a href="{% url 'logoutpg' %}" class="logout_btn">Logout</a>
+      <div class="nav_right">
+        <ul>
+          <li class="nr_li dd_main">
+              <a class="logout_btn">Patient</a>
+      
+            <div class="dd_menu">
+              <div class="dd_left">
+                <ul>
+                  <li><i class="far fa-star"></i></li>
+                  <li><i class="far fa-plus-square"></i></li>
+                  <li><i class="fas fa-sign-out-alt"></i></li>
+                </ul>
+              </div>
+              <div class="dd_right">
+                <ul>
+                  <li> <a href="">Update Profile</a></li>
+                  <li> <a href="{% url 'change_password' %}">Change Password</a></li>
+                  <li> <a href="{% url 'logoutpg' %}">Logout</a></li>
+                </ul>
+              </div>
+            </div>
+          </li>
+          <li class="nr_li">
+            <i class="fas fa-envelope-open-text"></i>
+          </li>
+        </ul>
       </div>
     </header>
+    </div>
     <!--header area end-->
     <!--mobile navigation bar start-->
     <div class="mobile_nav">
@@ -302,7 +404,7 @@ label #sidebar_btn:hover{
     <!--sidebar start-->
     <div class="sidebar">
       <div class="profile_info">
-        <h4 style="color: black;">Paitent Panel</h4>
+        <h4 style="color: black;">Doctor Panel</h4>
         <img src="{% static 'img/paticon.svg'%}" class="profile_image" alt="">
         <h4>Dr. Jagdish Seth</h4>
       </div>
@@ -331,6 +433,15 @@ label #sidebar_btn:hover{
       });
     });
     </script>
+
+<script>
+	var dd_main = document.querySelector(".dd_main");
+
+	dd_main.addEventListener("click", function(){
+		this.classList.toggle("active");
+	})
+</script>
+
 
   </body>
 </html>
