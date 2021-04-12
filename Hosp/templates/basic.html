@@ -13,97 +13,150 @@
     <title>{% block title %} {% endblock %}</title>  
 <style>
    
-   *{
-    margin: 0; padding:0; box-sizing: border-box;
-    font-family: 'Montserrat', sans-serif;
-}
 
+:root{
+  --color-1: #303036;
+}
 body{
-    -webkit-background-size:cover;
-    -moz-background-size:cover;
-    -o-background-size:cover;
-    background-size:cover;
-    
+	line-height: 1.5;
+	font-family: sans-serif;
+	background-color: #c6cde0;
 }
-     
-nav{
-    width: 100%; height: 100px;
-    /*background-color:  red;*/
-    display: flex; color: white;
-    
+*{
+	box-sizing: border-box;
+	margin:0;
+	padding:0;
+}
+a{
+	text-decoration: none;
+}
+ul{
+	list-style: none;
+}
+.container{
+	max-width: 1170px;
+	margin: auto;
+}
+.row{
+	display: flex;
+	flex-wrap: wrap;
+}
+.align-items-center{
+	align-items: center;
+}
+.justify-content-between{
+	justify-content: space-between;
+}
+/*header*/
+.header{
+	background-color: var(--color-1);
+	padding:12px 0;
+	position: relative;
+}
+.header .logo,
+.header .nav{
+	padding:0 15px;
+  z-index: 10;
+}
+.header .logo a{
+	font-size: 30px;
+	color: #ffffff;
+	text-transform: capitalize;
+}
+.header .nav ul li{
+	display: inline-block;
+	margin-left: 40px;
+}
+.header .nav ul li a{
+	display: block;
+	font-size: 16px;
+	padding:10px 0;
+	color: rgba(255,255,255,0.7);
+	text-transform: capitalize;
+	transition: all 0.5s ease;
+}
+.header .nav ul li a:hover,
+.header .nav ul li a.active{
+	color: #ffffff;
+}
+.header #nav-check{
+	position: absolute;
+	opacity:0;
+	pointer-events: none;
+}
+.nav-toggler{
+	height: 34px;
+	width: 44px;
+	background-color: #ffffff;
+	border-radius: 4px;
+	cursor: pointer;
+	display: none;
+	align-items: center;
+	justify-content: center;
+	margin-right: 15px;
+}
+.nav-toggler span{
+	display: block;
+	height: 2px;
+	width: 20px;
+	background-color: var(--color-1);
+	position: relative;
+}
+.nav-toggler span::before,
+.nav-toggler span::after{
+   content: '';
+   position: absolute;
+   width: 100%;
+   height: 100%;
+   background-color: var(--color-1);
+   left:0;
+}
+.nav-toggler span::before{
+	top: -6px;
+}
+.nav-toggler span::after{
+	top: 6px;
+}
+@media(max-width: 991px){
+    .nav-toggler{
+    	display: flex;
+    }
+    .header .nav{
+    	position: absolute;
+    	left:0;
+    	top:100%;
+    	width: 100%;
+    	background-color: var(--color-1);
+    	border-top: 1px solid rgba(255,255,255,0.2);
+    	opacity:0;
+    	visibility: hidden;
+      z-index: 9;
+    }
+    .header .nav ul li{
+    	display: block;
+    	margin:0;
+    }
+    .header #nav-check:checked ~ .nav{
+       opacity: 1;
+       visibility: visible;
+    }
+    .header #nav-check:focus ~ .nav-toggler{
+    	box-shadow: 0 0 15px #000000;
+    }
+    .header #nav-check:checked ~ .nav-toggler span{
+    	background-color: transparent;
+    }
+    .header #nav-check:checked ~ .nav-toggler span::before{
+    	top:0;
+    	transform: rotate(45deg);
+    }
+    .header #nav-check:checked ~ .nav-toggler span::after{
+    	top:0;
+    	transform: rotate(-45deg);
+    }
 }
 
-.logo{
-    width: 50%;
-    height: 100px;
-    background: #303036;
-}
 
-.logoo{
-    height: 150px;
-    width: auto;
-    float: left;
-    margin-top:-27px;
-
-}
-
-.logo h1{
-    line-height: 100px;
-    padding-left: 50px;
-}
-
-.menu{
-    width: 50%; height: 100px;
-    background: #303036;
-}
-
-.menu button{
-    font-size: 17px;
-    font-weight: 600;
-    color: white;
-    text-transform: uppercase;
-    background: linear-gradient(57deg, hsl(273, 100%, 39%) , #1E4D92 ); 
-    border-radius: 4px 4px 4px 4px;
-    padding: 10px 25px ; 
-}
-
-#firstlist{
-	color: orange;
-}
-#seclist
-{
-    color: white;
-}
-.menu ul{
-    width: 100%;
-    height: 100px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items:  center;
-}
-
-.menu ul li{
-    list-style: none;
-    font-size: 15px;
-    font-weight: bold;
-    text-transform: uppercase;
-}
-
-
-.menu .btn{
-    width: 150px;
-    margin-top: 0px;
-    padding: 14px 20px 14px 20px;
-    background-color: #2f8be0;
-    border-radius: 35px;
-    text-align: center
-}
-
-.menu .btn a{
-    font-size: 1.3vw;
-    color: #fff;
-}
 
 
     </style> 
@@ -111,26 +164,30 @@ nav{
      {% endblock %}
      
   </head>
-  <body class="main">
-    <nav>
- 
-      <div class="logo">
-       <img src="{% static 'img/Koala-01-1.png'%}" class="logoo">
-       <h1>Aboli Hospital</h1>
+  <body>
+     <header class="header">
+      <div class="container">
+          <div class="row align-items-center justify-content-between">
+             <div class="logo">
+               <a href="#">Aboli Hospital</a>
+             </div>
+             <input type="checkbox" id="nav-check">
+             <label for="nav-check" class="nav-toggler">
+                <span></span>
+             </label>
+             <nav class="nav">
+                <ul>
+                  <li  role="presentation"><a id="firstlist" href="/" class="active">HOME</a></li>
+                  <li><a id="seclist" href="/about">ABOUTUS</a></li>
+                  <li><a id="seclist" href="/contactus">CONTACTUS</a></li>
+                  <li><a id="seclist" href="/login">LOGIN</a></li>
+                </ul>
+             </nav>
+          </div>
       </div>
-      <div class="menu"> 
-       <ul>
-        <li  role="presentation">&#171; <a id="firstlist" href="/">HOME</a></li>
-        
-        <li><a id="seclist" href="/about">ABOUTUS</a></li>
-        <li><a id="seclist" href="/contactus">CONTACTUS</a></li>
-        <li><a id="seclist" href="/login">LOGIN</a> &#187;</li>
-        <div class="btn">
-            <a href="#">HELPLINE</a>
-        </div>
-    </div>  
-       </ul>
-     </nav>
+   </header>
+  
+
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
