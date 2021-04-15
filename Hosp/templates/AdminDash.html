@@ -35,7 +35,6 @@ header {
 }
 
 .admin-wrapper .left-sidebar {
-  flex: 2;
   height: 100%;
   background: #ed765e;
 }
@@ -480,6 +479,7 @@ header .menu-toggle {
   padding-left: 10px;
   transition: all 0.3s;
 }
+
 
 /* AUTH PAGES */
 
@@ -974,7 +974,7 @@ main {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
-  margin-top: 30px;
+  margin-top: 30px 0;
 }
 
 .card1 {
@@ -1012,6 +1012,7 @@ main {
   border-radius: 5px;
   font-size: 14px;
 }
+
 
 /*  SIDEBAR STARTS HERE  */
 
@@ -1144,6 +1145,40 @@ main {
     margin-bottom: 0;
   }
 
+  .charts__right__cards {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-bottom: 0;
+  }
+  .charts__right {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-bottom: 0;
+    width: 325px;
+  }
+  .charts__left {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-bottom: 0;
+    width: 350px;
+    margin-left: -10;
+  }
+  .content-table thead tr {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-bottom: 0;
+    width: 100px;
+    margin-left: -100;
+  }
+  .content-table thead tr td {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-bottom: 0;
+    width: 100px;
+    margin-left: -100;
+    font-size: 0.7em;
+  }
+
   .charts {
     grid-template-columns: 1fr;
     margin-top: 30px;
@@ -1154,14 +1189,13 @@ main {
   .navbar__left {
     display: none;
   }
-}
+}  
 
 
 /*Todays Appointment Div css*/
 .Abody
   {
       margin-top: 50px;
-      width: 500px;
   }
   .Abody_A1
   {
@@ -1175,9 +1209,8 @@ main {
   
   .content-table {
     border-collapse: collapse;
-    width: 500px;
     font-size: 0.9em;
-    border-radius: 5px 5px 0 0;
+    border-radius: 5px 0 0 0;
     overflow: hidden;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
   }
@@ -1197,7 +1230,8 @@ main {
   
   .content-table tbody tr {
     border-bottom: 1px solid #dddddd;
-    font-size: large;
+    font-size: 0.9em;
+    font-weight: bold;
   }
   
   .content-table tbody tr:nth-of-type(even) {
@@ -1240,19 +1274,6 @@ main {
         <div class="logo">
             <h1 class="logo-text"><span>Aboli</span>Hospital</h1>
         </div>
-        <i class="fa fa-bars menu-toggle"></i>
-        <ul class="nav">
-            <li>
-                <a href="#">
-                    <i class="fa fa-user"></i>
-                    Admin
-                    <i class="fa fa-chevron-down" style="font-size: .8em;"></i>
-                </a>
-                <ul>
-                    <li><a href="{% url 'logoutpg' %}" class="logout">Logout</a></li>
-                </ul>
-            </li>
-        </ul>
     </header>
 
 
@@ -1266,6 +1287,7 @@ main {
                     <li><a href="{% url 'adminaddpatient' %}">Manage Patient</a></li>
                     <li><a href="{% url 'adminadddoctor' %}">Manage Doctors</a></li>
                     <li><a href="{% url 'adminappointment' %}">Appointments</a></li>
+                    <li><a href="{% url 'logoutpg' %}" class="logout">Logout</a></li>
                 </ul>
             </div>
             <!-- // Left Sidebar -->
