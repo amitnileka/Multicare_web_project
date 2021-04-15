@@ -137,6 +137,13 @@
       line-height: 1.3rem;
     }
     
+    .button-group{
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 30px;
+    }
+
+
     .btn:hover {
       color: white !important;
       background: #005255;
@@ -590,7 +597,15 @@
       .content {
         width: 100%;
       }
-    
+      
+      .button-group{
+        grid-template-columns: 1fr;
+        gap: 10px;
+        margin-bottom: 0;
+        width: 170px;
+      }
+
+
       .auth-content {
         width: 50%;
       }
