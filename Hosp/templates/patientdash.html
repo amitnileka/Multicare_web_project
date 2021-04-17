@@ -312,6 +312,77 @@ label #sidebar_btn:hover{
 	display: flex;
 }
 
+.nav_right {
+    display: flex;
+    flex-wrap: wrap;
+    z-index: -1;
+  }
+
+
+  /* Dropdown Logout button */
+
+.mobile_nav_items{
+  overflow: hidden;
+  background-color: #333;
+}
+
+.mobile_nav_items .dropdown-content a {
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  line-height: 30px;
+}
+
+.dropdown {
+  overflow: hidden;
+  text-align: center;
+}
+
+
+.dropdown .dropbtn {
+  font-size: 16px;  
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+  text-align: center;
+
+}
+
+.mobile_nav_items a:hover, .dropdown:hover .dropbtn {
+  background-color: red;
+}
+
+.dropdown-content {
+  display: none;
+  background: #2F323A;  
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
 
 
 
@@ -365,12 +436,14 @@ label #sidebar_btn:hover{
     padding: 10px 20px;
   }
 
-  .nav_bar .mobile_profile_image{
+  .nav_bar .profile_image1{
     width: 50px;
     height: 50px;
     border-radius: 50%;
   }
-
+  .profile_name1{
+    color: #ccc;
+  }
   .nav_bar .nav_btn{
     color: #fff;
     font-size: 22px;
@@ -378,7 +451,30 @@ label #sidebar_btn:hover{
     transition: 0.5s;
     transition-property: color;
   }
+  div.b {
+    margin-left: 60px;
+    margin-top: 100px;
+    color: gray;
+}
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50vh;
+    width: 100%;
+    flex-wrap: wrap;
+    margin-top: -30px;
+    margin-left: -100px;
+    border-bottom: 20px;
+}
+  .nav_right {
+    display: none;
+  }
+  .dd_menu{
+    margin-right: 20px;
+    z-index: -1;
 
+  }
   .nav_bar .nav_btn:hover{
     color: #19B3D3;
   }
@@ -442,7 +538,7 @@ label #sidebar_btn:hover{
               </div>
               <div class="dd_right">
                 <ul>
-                  <li> <a href="">Update Profile</a></li>
+                  <li> <a href="{% url 'updateprofile' %}">Update Profile</a></li>
                   <li> <a href="{% url 'change_password' %}">Change Password</a></li>
                   <li> <a href="{% url 'logoutpg' %}">Logout</a></li>
                 </ul>
@@ -460,15 +556,31 @@ label #sidebar_btn:hover{
     <!--mobile navigation bar start-->
     <div class="mobile_nav">
       <div class="nav_bar">
-        <img src="images/mycariat-01.jpg" class="mobile_profile_image" alt="">
+        <img src="{% static 'img/paticon.svg'%}" class="profile_image1" alt="">
+        {% for d in patient_details%}
+        <h4 class="profile_name1">{{d.name}}</h4>
+        {% endfor %}
+
         <i class="fa fa-bars nav_btn"></i>
       </div>
       <div class="mobile_nav_items">
-        <a href="#"><i class="fas fa-desktop"></i><span>Home</span></a>
-        <a href="#"><i class="fas fa-cogs"></i><span>Profile</span></a>
-        <a href="#"><i class="fas fa-table"></i><span>Make Appointment</span></a>
-        <a href="#"><i class="fas fa-th"></i><span>View Appointment</span></a>
-        <a href="#"><i class="fas fa-info-circle"></i><span>About Us</span></a>
+        <a href="{% url 'patientdash'%}"><i class="fas fa-desktop"></i><span>Home</span></a>
+        <a href="{% url 'patientprofile'%}"><i class="fas fa-cogs"></i><span>Profile</span></a>
+        <a href="{% url 'makeappointments'%}"><i class="fas fa-table"></i><span>Make Appointment</span></a>
+        <a href="{% url 'viewappointments'%}"><i class="fas fa-th"></i><span>View Appointment</span></a>
+        <div class="dropdown">
+          <button class="dropbtn">Patient 
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-content">
+            <a href="{% url 'updateprofile' %}">Update Profile</a>
+            <a href="{% url 'change_password' %}">Change Password</a>
+            <a href="{% url 'logoutpg' %}">Logout</a>
+
+            <!-- <a href="#">Link 2</a>
+            <a href="#">Link 3</a> -->
+          </div>
+        </div>       
       </div>
     </div>
     <!--mobile navigation bar end-->
@@ -523,7 +635,7 @@ label #sidebar_btn:hover{
 {% endblock %}
     <script type="text/javascript">
     $(document).ready(function(){
-      $('.nav_btn').click(function(){
+      $('.nav_bar').click(function(){
         $('.mobile_nav_items').toggleClass('active');
       });
     });
