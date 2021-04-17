@@ -6,83 +6,59 @@
 {% block css %}
 <style>
 
-  .content{
-    width: (100% - 250px);
-    margin-top: 60px;
-    padding: 20px;
-    margin-left: 250px;
-   
-    background-position: center;
-    background-size: cover;
-    height: 100vh;
-    transition: 0.5s;
-  }
-  div.b{
+.table-box
+{
+    margin: 50px auto;
+}
+
+.table-row{
+    display: table;
+    width: 90%;
+    margin: 10px auto;
+    font-family: sans-serif;
+    background: transparent;
+    padding: 12px 0;
+    color: #555;
+    font-size: 13px;
+    box-shadow: 0 1px 4px 0px rgba(0,0,50,0.3);
+}
+.table-head{
+    background: #8665f7;
+    box-shadow: none;
+    color: #fff;
+    font-weight: 600;
+}
+.table-head .table-cell{
+    border-right: none;
+}
+.table-cell{
+    display: table-cell;
+    width: 15%;
+    text-align: center;
+    padding: 4px 0;
+    border-right: 1px solid #d6d4d4;
+    vertical-align: middle;
+}
+.first-cell{
+    text-align: left;
+    padding-left: 10px;
+}
+.last-cell{
+    border-right: none;
+}
+a{
+    text-decoration: none;
+    color: #555;
+}
+
+div.b{
       margin-left: 0px;
       margin-top: 30px;
       color:gray;
   }
-  .Abody
-  {
-      margin-top: 50px;
-      height: 600px;
-     
-      width: 1000px;
-  }
-  .Abody_A1
-  {
-      
-      margin-left: 20px;
-      height: 450px;
-      
-      padding: 15px;
   
       
-  }* {
-    font-family: sans-serif; /* Change your font family */
-  }
-  
-  .content-table {
-    border-collapse: collapse;
-    width: 900px;
-    font-size: 0.9em;
-    min-width: 400px;
-    border-radius: 5px 5px 0 0;
-    overflow: hidden;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-  }
-  
-  .content-table thead tr {
-    background-color: #009879;
-    color: #ffffff;
-    text-align: left;
-    font-weight: bold;
-    font-size: large;
-  }
-  
-  .content-table th,
-  .content-table td {
-    padding: 12px 15px;
-  }
-  
-  .content-table tbody tr {
-    border-bottom: 1px solid #dddddd;
-    font-size: large;
-  }
-  
-  .content-table tbody tr:nth-of-type(even) {
-    background-color: #f3f3f3;
-  }
-  
-  .content-table tbody tr:last-of-type {
-    border-bottom: 2px solid #009879;
-  }
-  
-  .content-table tbody tr.active-row {
-    font-weight: bold;
-    color: #009879;
-  }
-  .pres:link, .pres:visited {
+.pres:link, .pres:visited {
   background-color: #90EE90;
   color: white;
   padding: 14px 10px;
@@ -94,6 +70,18 @@
 .pres:hover, .pres:active {
   background-color: darkgreen;
 }
+
+
+@media only screen and (max-width: 600px) {
+  .table-row {
+    font-size: 11px;
+  }
+  .table-box{
+    overflow-x: scroll;
+
+  }
+}
+
   
   </style>
 {% endblock %}
@@ -104,14 +92,38 @@
         <h1>USER | APPOINTMENT HISTORY</h1>
         <hr style="height: 3px; border-width: 0; color: gray; background-color: gray; margin-right: 30px;">
     </div>
-    <div class="Abody">
+    <div class="table-box">
+      <div class="table-row table-head">
+          <div class="table-cell first-cell">
+              <p>Doctor Name</p>
+          </div>
+          <div class="table-cell">
+              <p>Patient Gender</p>
+          </div>
+          <div class="table-cell">
+            <p>Appointment Date</p>
+          </div>
+          <div class="table-cell">
+           <p>Appointemnt Time</p>
+          </div>
+          <div class="table-cell">
+            <p>Symptoms</p>
+          </div>
+          <div class="table-cell last-cell">
+            <p>Status</p>
+          </div> 
+          <div class="table-cell">
+           <p>Action</p>
+          </div>
+      </div>
+
+
+    <!-- <div class="Abody">
         <div class="Abody_A1">
             <table class="content-table">
                 <thead>
                   <tr>
-                    <th>
-                      Doctor Name
-                    </th>
+                    <th>Doctor Name</th>
                     <th>Patient Gender</th>
                     <th>Appointment Date</th>
                     <th>Appointemnt Time</th>
@@ -119,10 +131,36 @@
                     <th>Status</th>
                     <th>Action</th>
                   </tr>
-                </thead>
-                <tbody>
+                </thead> -->
+                <!-- <tbody> -->
                     {% for i in stu %}
-                  <tr>
+
+                    <div class="table-row">
+                      <div class="table-cell first-cell">
+                          <p>{{i.doctorname}}</p>
+                      </div>
+                      <div class="table-cell">
+                          <p>{{i.gender}}</p>
+                      </div>
+                      <div class="table-cell">
+                          <p>{{i.appointmentdate}}</p>
+                      </div>
+                      <div class="table-cell">
+                          <p>{{i.appointmenttime}}</p>
+                      </div>
+                      <div class="table-cell">
+                          <p>{{i.symptoms}}</p>
+                      </div>
+                      <div class="table-cell">
+                          <p>{{i.status}}</p>
+                      </div>
+                       
+                      <div class="table-cell last-cell">
+                        <a href="{% url 'patient_delete_appointment' i.id %} " onclick="return confirm('Are you sure you want to delete?')" class="btn btn-danger pres">Delete</a>                      </div>   
+                  </div>
+          
+
+                  <!-- <tr>
                     <td>{{i.doctorname}}</td>
                     <td>{{i.gender}}</td>
                     <td>{{i.appointmentdate}}</td>
@@ -130,7 +168,7 @@
                     <td>{{i.symptoms}}</td>
                     <td>{{i.status}}</td>
                     <td><a href="{% url 'patient_delete_appointment' i.id %} " onclick="return confirm('Are you sure you want to delete?')" class="btn btn-danger pres">Delete</a></td>
-                </tr>
+                </tr> -->
                   {% endfor %}
                 </tbody>
               </table>
