@@ -9,7 +9,6 @@
 
 @import url('https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap');
 
-
 body{
    background-color: #f3f3f3;
 }
@@ -21,8 +20,10 @@ body{
   transform: translate(-50%,-50%);
   width: 850px;
   height: 70%;
-  display: flex;
   box-shadow: 0 1px 20px 0 rgba(69,90,100,.08);
+  display: flex;
+
+
 }
 
 .wrapper .left{
@@ -103,11 +104,10 @@ body{
   width: 45px;
   height: 45px;
   background: linear-gradient(to right,#303036,#55555e);
-  margin-right: 10px;
+  margin-right: 20px;
   border-radius: 5px;
   text-align: center;
   line-height: 45px;
-  margin-top: 15%;
 }
 
 .wrapper .social_media ul li a{
@@ -115,13 +115,28 @@ body{
   display: block;
   font-size: 18px;
 }
+
+
+@media (max-width: 850px){
+.wrapper{
+  grid-template-columns: 1fr;
+  width: 400px;
+  margin-left: -40px;
+  margin-top: 20%;
+  z-index: -1;
+  height: 80%;
+
+}
+}
+
+
 </style>
 {% endblock %}
 {% block body_block%}
 {% for d in doctor_details %}
 <div class="wrapper">
     <div class="left">
-        <img src="{% static 'img/paticon.svg'%}" 
+        <img src="{% static 'img/paticon.svg'%}"
         alt="user" width="100">
         <h4>Dr. {{ d.name }}</h4>
             <div style="margin-top: 15%;">
@@ -168,11 +183,10 @@ body{
               </div>
             </div>
         </div>
-    {% endfor %}  
-      
-       
+    {% endfor %}
+
+
     </div>
 </div>
 <div class="scroll-top-wrapper"><span class="scroll-top-inner"><i class="fa fa-arrow-circle-up"></i></span></div>
-
 {% endblock %}
