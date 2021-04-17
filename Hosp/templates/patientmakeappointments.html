@@ -18,7 +18,6 @@
   box-shadow: 0 5px 10px rgba(0,0,0,0.15);
   margin-left: 275px;
   margin-top: 90px;
-  overflow: hidden;
   margin-bottom: 30px;
 }
 
@@ -160,18 +159,25 @@ form .input-box span.details{
 }
  @media(max-width: 584px){
  .container{
-  max-width: 100%;
+   width: 100%;
+   max-width: 100%;
+   box-shadow: none;
 }
-form .user-details .input-box{
+  .title{
+    margin-left: -250px;
+    margin-top: -50px;
+  }
+  form .user-details .input-box{
     margin-bottom: 15px;
-    width: 100%;
+    width: 90%;
   }
   form .category{
-    width: 100%;
+    width: 80%;
   }
   .content form .user-details{
     max-height: 300px;
-    overflow-y: scroll;
+    overflow-x: scroll;
+    width: 300px;
   }
   .user-details::-webkit-scrollbar{
     width: 5px;
