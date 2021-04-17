@@ -20,8 +20,10 @@ body{
   transform: translate(-50%,-50%);
   width: 850px;
   height: 70%;
-  display: flex;
   box-shadow: 0 1px 20px 0 rgba(69,90,100,.08);
+  display: flex;
+
+
 }
 
 .wrapper .left{
@@ -113,6 +115,22 @@ body{
   display: block;
   font-size: 18px;
 }
+
+
+@media (max-width: 850px){
+.wrapper{
+  grid-template-columns: 1fr;
+  width: 400px;
+  margin-left: -90px;
+  margin-top: 40px;
+  z-index: -1;
+
+
+}
+}
+    
+
+
 </style>
 {% endblock %}
 {% block body_block%}
@@ -166,6 +184,5 @@ body{
       </div>
     </div>
 </div>
-<div class="scroll-top-wrapper"><span class="scroll-top-inner"><i class="fa fa-arrow-circle-up"></i></span></div>
 
 {% endblock %}
