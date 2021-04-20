@@ -19,110 +19,70 @@ body{
   background: #fff;
 }
 
-.wrapper{
-  width: 800px;
-  margin: 80px auto 0;
-  margin-top: 15.5%;
+.accordion {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  overflow: hidden;
+  font-family: "Quicksand", sans-serif;
+  background: #009578;
+  margin-left: 50px;
+  margin-right: 50px;
 }
 
-.wrapper .accordion_wrap .accordion_header{
-  width: 100%;
-  height: 100px;
-  background: #303036;
-  padding: 15px;
-  color: #fff;
-  font-weight: 700;
-  border-bottom: 2px solid #39a098;
-  position: relative;
+.accordion__label,
+.accordion__content {
+  padding: 14px 20px;
+}
+
+.accordion__label {
+  display: block;
+  color: #ffffff;
+  font-weight: 500;
   cursor: pointer;
+  position: relative;
+  transition: background 0.1s;
 }
 
-.wrapper .accordion_wrap:first-child .accordion_header{
-  border-top-left-radius: 3px;
-  border-top-right-radius: 3px;
+.accordion__label:hover {
+  background: rgba(0, 0, 0, 0.1);
 }
 
-.wrapper .accordion_wrap:last-child .accordion_header{
-  border-bottom: 2px solid transparent;
-  border-bottom-left-radius: 3px;
-  border-bottom-right-radius: 3px;
-}
-
-.wrapper .accordion_wrap:last-child .accordion_header:hover{
-  border-bottom: 2px solid transparent;
-}
-
-.wrapper .accordion_wrap .accordion_header:before,
-.wrapper .accordion_wrap .accordion_header:after{
+.accordion__label::after {
   content: "";
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  right: 15px;
-  width: 20px;
-  height: 2px;
-  background: #39a098;
+  right: 20px;
+  width: 12px;
+  height: 6px;
+  background-image: url('data:image/svg+xml;utf8,<svg width="100" height="50" xmlns="http://www.w3.org/2000/svg"><polygon points="0,0 100,0 50,50" style="fill:%23FFFFFF99;" /></svg>');
+  background-size: contain;
+  transition: transform 0.4s;
+}
+.accordion__content {
+  background: #ffffff;
+  line-height: 1.6;
+  font-size: 0.85em;
+  display: none;
 }
 
-.wrapper .accordion_wrap .accordion_header:hover{
-  color: #01645d;
-  border-color: #01645d;
+.accordion__input {
+  display: none;
 }
 
-.wrapper .accordion_wrap .accordion_header:hover:before,
-.wrapper .accordion_wrap .accordion_header:hover:after{
-  background: #01645d;
+.accordion__input:checked ~ .accordion__content {
+  display: block;
 }
 
-.wrapper .accordion_wrap .accordion_header:after{
-  transform: rotate(-90deg);
-  transition: all 0.5s ease;
-}
-
-.wrapper .accordion_wrap .accordion_body{
-  width: 100%;
-  height: 0px;
-  transition: all 0.5s ease;
-  background: #39a098;
-  overflow: hidden;
-}
-
-.wrapper .accordion_wrap .accordion_body p{
-  padding: 15px;
-  font-size: 15px;
-  line-height: 22px;
-  color: #fff;
-}
-
-.wrapper .accordion_wrap .accordion_header.active{
-  color: #01645d; 
-  border-color: #01645d;
-}
-
-.wrapper .accordion_wrap:last-child .accordion_header.active{
-  border-bottom: 2px solid #01645d;
-  border-bottom-left-radius: 0px;
-  border-bottom-right-radius: 0px;
-}
-
-.wrapper .accordion_wrap .accordion_header.active:before,
-.wrapper .accordion_wrap .accordion_header.active:after{
-  background: #01645d;
-}
-
-.wrapper .accordion_wrap .accordion_header.active:after{
-  transform: rotate(0deg);
-}
-
-.wrapper .accordion_wrap .accordion_header.active + .accordion_body{
-  height: 180px;
+.accordion__input:checked ~ .accordion__label::after {
+  transform: translateY(-50%) rotate(0.5turn);
 }
 
 
 
 /*  Accordion CSS end  */
 
-/*  About CSS  */
+ /* About CSS  */
 .scroll-top-wrapper {
   opacity: 0;
   visibility: hidden;
@@ -325,52 +285,56 @@ footer .container .sec p{
   </div>
   
 
-  
-    <div class="wrapper">
-      <div class="tt">
-      <h1 style="text-align: center;">F A Q</h1>
-  <div class="accordion_wrap accordion_1">
-    <div class="accordion_header">
-      What are the visiting hours for patient visitors?
-    </div>
-    <div class="accordion_body">
-      <p>Visiting hours are from 9 AM to 9 PM.</p>
-    </div>
-  </div>
-  <div class="accordion_wrap accordion_2">
-    <div class="accordion_header">
-      How many In-Patient beds are available at Aboli Hospital?
-    </div>
-    <div class="accordion_body">
-       <p>40 Beds</p>
+
+<div class="accordion">
+  <div>
+    <input type="radio" name="example_accordion" id="section1" class="accordion__input">
+    <label for="section1" class="accordion__label">What are the visiting hours for patient visitors?</label>
+    <div class="accordion__content">
+      <p>
+        Visiting hours are from 9 AM to 9 PM.
+      </p>
     </div>
   </div>
-  <div class="accordion_wrap accordion_3">
-    <div class="accordion_header">
-      Does Aboli Hospital provide emergency services?
-    </div>
-    <div class="accordion_body">
-      <p>Yes, Aboli Hospital provides emergency services.</p>
-    </div>
-  </div>
-  <div class="accordion_wrap accordion_4">
-    <div class="accordion_header">
-      What are the OPD Timing at Aboli Hospital?
-    </div>
-    <div class="accordion_body">
-      <p>From 11 AM to 8 PM</p>
+  <div>
+    <input type="radio" name="example_accordion" id="section2" class="accordion__input">
+    <label for="section2" class="accordion__label">How many In-Patient beds are available at Aboli Hospital?
+    </label>
+    <div class="accordion__content">
+      <p>
+        40 Beds
+      </p>
     </div>
   </div>
-  <div class="accordion_wrap accordion_5">
-    <div class="accordion_header">
-      How can I get in touch with Aboli Hospital?
+  <div>
+    <input type="radio" name="example_accordion" id="section3" class="accordion__input">
+    <label for="section3" class="accordion__label">Does Aboli Hospital provide emergency services?</label>
+    <div class="accordion__content">
+      <p>
+        Yes, Aboli Hospital provides emergency services.
+      </p>
     </div>
-    <div class="accordion_body">
-       <p>Email address and Phone number are given in contact us section.</p>
+  </div>
+  <div>
+    <input type="radio" name="example_accordion" id="section4" class="accordion__input">
+    <label for="section4" class="accordion__label">What are the OPD Timing at Aboli Hospital?</label>
+    <div class="accordion__content">
+      <p>
+        From 11 AM to 8 PM      
+      </p>
+    </div>
+  </div>
+  <div>
+    <input type="radio" name="example_accordion" id="section5" class="accordion__input">
+    <label for="section5" class="accordion__label">How can I get in touch with Aboli Hospital?</label>
+    <div class="accordion__content">
+      <p>
+        Email address and Phone number are given in contact us section.
+      </p>
     </div>
   </div>
 </div>
-</div>	
+
 
 
       <!-- footer -->
@@ -433,14 +397,6 @@ footer .container .sec p{
        </div>
        {% block js%}
        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-       <script>
-         $(document).ready(function(){
-           $(".accordion_header").click(function(){
-              $(".accordion_header").removeClass("active");
-              $(this).addClass("active");
-           });
-         });
-       </script>
        {% endblock %}
      
         <script
