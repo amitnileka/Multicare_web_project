@@ -567,19 +567,14 @@ form .user-details .input-box{
          </div>
          <div class="col-sm-6">
             <button class="btn btn-success adddata" ><i class="material-icons">&#xE147;</i> <span>Add New Medicine</span></button>
-            <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>
+
            </div>
           </div>
         </div>
             <table class="table table-striped table-hover">
               <thead>
                 <tr>
-                 <th>
-                  <span class="custom-checkbox">
-                  <input type="checkbox" id="selectAll">
-                  <label for="selectAll"></label>
-                  </span>
-                  </th>
+
                     <th>Medicine Name</th>
                     <th>Quantity</th>
                     <th>Does</th>
@@ -589,12 +584,7 @@ form .user-details .input-box{
                 </thead>
              <tbody class="tbody-content">
               <tr>
-                <td>
-                 <span class="custom-checkbox">
-                 <input type="checkbox" id="checkbox1" name="options[]" value="1">
-                 <label for="checkbox1"></label>
-               </span>
-               </td>
+
                   <td><input type="text" name="medname1" id=""></td>
                   <td><input type="text" name="mg1" id=""></td>
                   <td><input type="text" name="dose1" id=""></td>
@@ -642,12 +632,6 @@ form .user-details .input-box{
               c=c+1;
               event.preventDefault()
               $('.tbody-content').append(`<tr>
-                <td>
-                 <span class="custom-checkbox">
-                 <input type="checkbox" id="checkbox1" name="options[]" value="1">
-                 <label for="checkbox1"></label>
-               </span>
-               </td>
                <td><input type="text" name="medname${c}" id=""></td>
                   <td><input type="text" name="mg${c}" id=""></td>
                   <td><input type="text" name="dose${c}" id=""></td>
