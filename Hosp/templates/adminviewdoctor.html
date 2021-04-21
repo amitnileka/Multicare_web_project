@@ -414,6 +414,7 @@
     
 
  /* ***********Table css************ */
+
  .table-box
 {
     margin: 50px auto;
@@ -475,7 +476,7 @@ a{
 @media only screen and (max-width: 600px) {
   .table-row {
     font-size: 11px;
-    width: 100%;
+    width: 400px;
   }
   .pres:link, .pres:visited {
   padding: 5px 4px;
@@ -498,11 +499,6 @@ a{
         margin-bottom: 0;
         width: 170px;
       }
-
-
-      .auth-content {
-        width: 50%;
-      }
     
       .content .main-content .post {
         width: 100%;
@@ -522,34 +518,13 @@ a{
         margin-top: 30px;
       }
     
-      .footer {
-        height: auto;
-      }
-    
-      .footer .footer-content {
-        height: auto;
-        flex-direction: column;
-      }
-    
-      .footer .footer-content .contact-form {
-        padding-bottom: 90px;
-      }
-    
-      .footer .footer-content .contact-form .contact-btn {
-        width: 100%;
-      }
     }
     
     @media only screen and (max-width: 770px) {
       header {
         position: relative;
       }
-    
-      .auth-content {
-        width: 60%;
-    
-      }
-    
+        
       .main-content-wrapper {
         padding: 10px;
       }
@@ -607,12 +582,7 @@ a{
       .content .main-content .post {
         height: auto;
       }
-    
-      .auth-content {
-        width: 90%;
-    
-      }
-    
+        
       .content .main-content.single {
         padding: 10px 20px;
       }
@@ -713,21 +683,7 @@ a{
                             <div class="table-cell last-cell">
                               <a href="{% url 'admin_delete_doctor' i.id i.username %}" onclick="return confirm('Are you sure you want to delete?')" class="btn btn-danger pres">Delete</a>                            </div>   
                         </div>
-
-                            <!-- <tr>
-                                
-                                <td>{{ i.name }}</td>
-                                <td>{{ i.email }}</td>
-                                <td>{{ i.specialization }}</td>
-                                <td>{{ i.phonenumber }}</td>
-                                <td>{{ i.address }}</td>
-                                <td>{{ i.gender }}</td>
-                                <td>{{ i.bloodgroup }}</td>
-                                <td><a href="{% url 'admin_delete_doctor' i.id i.username %}" onclick="return confirm('Are you sure you want to delete?')" class="btn btn-danger">Delete</a></td>
-                            </tr> -->
                            {% endfor %}
-                        </tbody>
-                    </table>
 
                 </div>
 
