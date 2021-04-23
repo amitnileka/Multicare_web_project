@@ -4,178 +4,110 @@
 {% block css %}
 <style>
 
-    
 *{
-    margin: 0;
-    padding:0; 
-    box-sizing: border-box;
-    font-family: 'Montserrat', sans-serif;
-}
+               margin: 0;
+               padding: o;
+               font-family: sans-serif;
+           }
 
-body{
-    -webkit-background-size:cover;
-    -moz-background-size:cover;
-    -o-background-size:cover;
-    background-size:cover;
-}
+           .container1{
+               width: 100%;
+               min-height: 100vh;
+               padding-left: 8%;
+               padding-right: 8%;
+               box-sizing: border-box;
+               overflow: hidden;
+           }
 
-
-
-
-
-.leftside { width: 45%; height: auto; overflow: hidden; margin-top: 20px;}
-
-.leftside img{  width: 600px;  height: 500px; }
-
-.rightside{ width: 55%; height: 300px; color: white; text-align: center; margin-top: 80px; padding: 50px;}
-
-.rightside h1{ text-align: center;
-    color: #ffffff;
-    font-size: 50px;
-    font-weight: 900;
-    text-transform: uppercase; } 
-
-.rightside p {  
-    font-size: 1.1rem; padding: 50px 0; }
-
-.rightside button{   font-size: 17px;
-    font-weight: 600;
-    color: white;
-    text-transform: uppercase;
-    background: linear-gradient(57deg, #00C6A7 , #1E4D92 ); 
-    border-radius: 4px 4px 4px 4px;
-    padding: 20px 35px ; 
-}
-
-
-
-.rightside button:hover{
-      background: linear-gradient(57deg, #1E4D92, #00C6A7 );   
-}
-
-
-/* ABOUT CSS */
-
-.about{
-    height: 600px;
-    width: 100%;
-    padding: 50px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
-    margin-top: 0%;
-}
-
-.aboutText{
-    position: relative;
-    padding: 0 50px;
-    height: inherit;
-}
-
-.aboutText h1{
-    position: relative;
-    left: 0px;
-}
-
-.aboutText img{
-    width: 10vw;
-    position: absolute;
-    top: 110px;
-    left: 10%;
-}
-
-.aboutList{
-    width: 50%;
-}
-
-ol{
-    list-style: none;
-    color: #e0501b;
-    margin-top: -20%;
-}
-
-ol li{
-    font-size: 34px;
-    position: relative;
-    margin-bottom: 20px;
-    border-bottom: 1px solid #ebebeb;
-}
-
-li p{
-    font-size: 16px;
-    color: #000;
-    padding-left: 60px;
-    line-height: 30px;
-    opacity: 0.6;
-}
-
-li span{
-    position: absolute;
-    line-height: 25px;
-    font-weight: 600;
-}
-
-/* button */
-
-.rightside .btn{
-    width: 180px;
-    margin-top: -10px;
-    padding: 14px 20px 14px 20px;
-    background-color: #2f8be0;
-    border-radius: 45px;
-    text-align: center
-}
-
-.rightside .btn a{
-    font-size: 1.2vw;
-    color: #fff;
-}
+           .row2{
+               display: flex;
+               justify-content: space-between;
+               align-items: center;
+               margin: 100px 0;
+           }
+           .col-1{
+               flex-basis: 40%;
+               position: relative;
+               margin-left: 50px;
+           }
+           .col-1 h2{
+               font-size: 54px;
+           }
+           .col-1 h3{
+               font-size: 20px;
+               color: #707070;
+               font-weight: 100;
+               margin: 20px 0 20px;
+           }
+           button{
+               width: 140px;
+               border: 0;
+               padding: 12px 10px;
+               outline: none;
+               color: #fff;
+               background: linear-gradient(to right, #fb5283, #ff3527);
+               border-radius: 6px;
+               cursor: pointer;
+               transition: width 0.5s;
+           }
+           button:hover{
+               width: 160px;
+               display: flex;
+               align-items: center;
+               justify-content: space-between;
+           }
+           .col-1::after{
+               content: '';
+               width: 10px;
+               height: 57%;
+               background: linear-gradient(#ff469f, #ff6062);
+               position: absolute;
+               left: -40px;
+               top: 8px;
+           }
+           .col-2{
+               position: relative;
+               flex-basis: 60%;
+               display: flex;
+               align-items: center;
+           }
+           .col-2 .controller{
+               width: 60%;
+               margin-top: -100px;
+               margin-left: 200px;
+           }
 
 
-/* LANDING CSS */
+           @media only screen and (max-width:700px){
 
-.landing{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 10vw 60px 10vw;
-    height: 100vh;
-}
-
-.landingText h1{
-    font-size: 6vw;
-    margin: 0 !important;
-    
-}
-
-.landingText h3{
-    margin: 6px !important;
-    font-size: 20px;
-    opacity: 0.3;
-    line-height: 30px;
-}
-
-.landingText .btn{
-    width: 200px;
-    margin-top: 30px;
-    padding: 14px 20px 14px 20px;
-    background-color: #2f8be0;
-    border-radius: 45px;
-    text-align: center
-}
-
-.landingText .btn a{
-    font-size: 1.2vw;
-    color: #fff;
-}
-
-.landingImage img{
-    width: 28vw;
-    margin-top: -29%;
-}
-
+               .menu-icon{
+                   display: block;
+               }
+               #menuList{
+                   overflow: hidden;
+                   transition: 0.5s;
+               }
+               .row2{
+                   flex-direction: column-reverse;
+                   margin: 50px 0;
+               }
+               .col-2{
+                   flex-basis: 100%;
+                   margin-bottom: 50px;
+               }
+               .col-2 .controller{
+                   width: 77%;
+               }
+               .col-1{
+                   flex-basis: 100%;
+               }
+               .col-1 h2{
+                   font-size: 35px;
+               }
+               .col-1 h3{
+                   font-size: 15px;
+               }
+           }
 
 
 
@@ -190,7 +122,6 @@ body
 }
 footer{
   position: relative;
-  width: 100%;
   height: auto;
   padding: 50px 100px;
   background: #303036;
@@ -250,11 +181,11 @@ footer .container .sec p{
 }
 .quicklinks li{
   list-style: none;
+  padding: 10px;
 }
 .quicklinks li a{
   color: #f7f7f7;
   text-decoration: none;
-  margin-bottom: 10px;
   display: inline-block;
 }
 .quicklinks li a:hover{
@@ -275,12 +206,12 @@ footer .container .sec p{
 .info a{
   color: #fff;
   text-decoration: none;
+  margin-top: 20px;
 }
 .info a:hover{
   color: #ffeb3b;
 }
 .copyrightText{
-  width: 100%;
   background: #343a40;
   color: #686868;
   padding: 8px 100px;
@@ -310,55 +241,19 @@ footer .container .sec p{
 {% block body %}
 
         <!-- LANDING PAGE -->
- <div style="z-index: -1;" class="wrapper">
 
-          <div class="landing">
-          <div class="landingText" data-aos="fade-up" data-aos-duration="1000">
-              <h1>MAKING<span style="color:#e0501b;font-size: 4vw"> HEALTHCARE SIMPLE</span> </h1>
-              <h3> Aboli Hospital Management Services <br> We are always here to help you. </h3>
-              <div class="btn">
-                  <a href="#">Make Appointment</a>
+        <div class="container1">
+          <div class="row2">
+              <div class="col-1">
+                  <h2>MAKING <br>HEALTHCARE SIMPLE</h2>
+                  <h3>Aboli Hospital Management Services <br> We are always here to help you.</h3>
+                  <button type="button">Make Appointment</button>
+              </div>
+              <div class="col-2">
+                  <img src="{%static 'img/bg.png'%}" class="controller">
               </div>
           </div>
-          <div class="landingImage" data-aos="fade-down" data-aos-duration="2000">
-              <img src="{%static 'img/bg.png'%}">
-          </div>
       </div>
-
-
-        <!-- ABOUT SECTION -->
-
-        <div  class="about">
-          <div class="aboutText" data-aos="fade-up" data-aos-duration="1000">
-              <h1>Aboli Hospitals Services <br> <span style="color:#2f8be0;font-size:3vw">Offered:</span> </h1>
-              <img src="{%static 'img/doctor-woman-400px.png'%}">
-          </div>
-          <div class="aboutList" data-aos="fade-left" data-aos-duration="1000">
-              <ol>
-                  <li> 
-                      <span>01</span>
-                       <p>Well-equipped clinic with all the modern equipment.</p>
-                  </li>
-                  <li> 
-                      <span>02</span>
-                       <p>The clinic has separate waiting and consultation areas which allow enough space for patients to wait conveniently at the clinic</p>
-                  </li>
-                  <li> 
-                      <span>03</span>
-                       <p>Being a specicialized Hospitals, the doctor offers a number of medical services</p>
-                  </li>
-                  <li> 
-                      <span>04</span>
-                       <p>The clinic is operational bettween 00:00 - 23:59</p>
-                  </li>
-
-              </ol>
-          </div>
-      </div>
-
-</div>
-
-      <!-- footer -->
       <footer>
       <div class="container">
         <div class="sec aboutus">
@@ -395,7 +290,7 @@ footer .container .sec p{
           <ul class="info">
             <li>
               <span><i class="fa fa-map-marker" aria-hidden="true"></i></span>
-              <span style="margin-left: 70px;">Shivaji Nagar <br> Parbhani-431401,<br>INDIA.</span>
+              <span>Shivaji Nagar <br> Parbhani-431401,<br>INDIA.</span>
             </li>
 
             <li style="margin-top: 70px;">
