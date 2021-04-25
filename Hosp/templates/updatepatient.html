@@ -1,10 +1,12 @@
+
 <!DOCTYPE html>
+{% load static %}
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Update Profile</title>
-   
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>
 <style>
@@ -360,7 +362,7 @@ label #sidebar_btn:hover{
 
 
 .dropdown .dropbtn {
-  font-size: 16px;  
+  font-size: 16px;
   border: none;
   outline: none;
   color: white;
@@ -378,7 +380,7 @@ label #sidebar_btn:hover{
 
 .dropdown-content {
   display: none;
-  background: #2F323A;  
+  background: #2F323A;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
@@ -774,7 +776,7 @@ a {
   }
 }
 
-</style>  
+</style>
 </head>
   <body>
     {% load static%}
@@ -790,7 +792,7 @@ a {
         <ul>
           <li class="nr_li dd_main">
               <a class="logout_btn">Patient</a>
-      
+
             <div class="dd_menu">
               <div class="dd_left">
                 <ul>
@@ -822,7 +824,7 @@ a {
           {% for d in patient_details%}
           <h4 class="profile_name1">{{d.name}}</h4>
           {% endfor %}
-  
+
           <i class="fa fa-bars nav_btn"></i>
         </div>
           <div class="mobile_nav_items">
@@ -831,26 +833,26 @@ a {
           <a href="{% url 'makeappointments'%}"><i class="fas fa-table"></i><span>Make Appointment</span></a>
           <a href="{% url 'viewappointments'%}"><i class="fas fa-th"></i><span>View Appointment</span></a>
           <div class="dropdown">
-            <button class="dropbtn">Patient 
+            <button class="dropbtn">Patient
               <i class="fa fa-caret-down"></i>
             </button>
             <div class="dropdown-content">
               <a href="{% url 'updateprofile' %}">Update Profile</a>
               <a href="{% url 'change_password' %}">Change Password</a>
               <a href="{% url 'logoutpg' %}">Logout</a>
-  
+
               <!-- <a href="#">Link 2</a>
               <a href="#">Link 3</a> -->
             </div>
-          </div>       
+          </div>
         </div>
       </div>
       <!--mobile navigation bar end-->
-  
+
     <!--header area end-->
   <div style="width: 50%;" class="auth-content">
 
-    <form  method="post">
+    <form  method="post" enctype="multipart/form-data">
       {% csrf_token%}
       <h2 class="form-title">Update Profile</h2>
 
@@ -858,8 +860,8 @@ a {
         <li>Username required</li>
       </div> -->
       {% for i in pat %}
-    
-     
+
+
       <div>
         <label>Name</label>
         <input type="text" name="name" class="text-input" value="{{i.name}}" required>
@@ -878,21 +880,24 @@ a {
       </div>
       <div>
         <label>Phone Number</label><br>
-        <input style="box-sizing: border-box; width: 590px; height: 50px; " type="tel" name="phonenumber" required value="{{i.phonenumber}}">
+        <input class="text-input" type="tel" name="phonenumber" required value="{{i.phonenumber}}">
       </div>
 
       <div>
         <label>Blood Group</label>
         <input type="text" name="bloodgroup" class="text-input" value="{{i.bloodgroup}}" required>
       </div>
-
+      <div>
+        <label">Update Image</label>
+        <input type="file" name="image" class="text-input"  required >
+      </div>
       <div>
         <button type="submit" name="register-btn" class="btn btn-big">Save</button>
       </div>
     </form>
 
   </div>
-  
+
   {% endfor %}
     <script type="text/javascript">
     $(document).ready(function(){
