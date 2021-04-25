@@ -476,10 +476,14 @@ label #sidebar_btn:hover{
     <!--mobile navigation bar start-->
     <div class="mobile_nav">
       <div class="nav_bar">
-        <img src="{% static 'img/paticon.svg'%}" class="profile_image1" alt="">
-
         {% for d in doctor_details%}
-        <h4 class="profile_name1">{{d.name}}</h4>
+        {%if d.profileimg %}
+        <img src="{{d.profileimg.url}}" class="profile_image1" alt="">
+{% else %}
+<img src="{%static 'img/default-pic.jpg'%}" class="profile_image1" alt="gotta">
+{%endif%}
+
+        <h4 class="profile_name1">DR. {{d.name}}</h4>
         {% endfor %}
         <i class="fa fa-bars nav_btn"></i>
       </div>
@@ -506,8 +510,15 @@ label #sidebar_btn:hover{
     <div class="sidebar">
       <div class="profile_info">
         <h4 style="color: black;">Doctor Panel</h4>
-        <img src="{% static 'img/paticon.svg'%}" class="profile_image" alt="">
-        <h4>Dr. Jagdish Seth</h4>
+        {% for d in doctor_details%}
+        {%if d.profileimg %}
+        <img src="{{d.profileimg.url}}" class="profile_image" alt="">
+{% else %}
+<img src="{%static 'img/default-pic.jpg'%}" class="profile_image" alt="gotta">
+{%endif%}
+
+        <h4 class="profile_name1">DR. {{d.name}}</h4>
+        {% endfor %}
       </div>
       <a href="{% url 'patientdash'%}"><i class="fas fa-desktop"></i><span>Home</span></a>
       <a href="{% url 'patientprofile'%}"><i class="fas fa-cogs"></i><span>Profile</span></a>
