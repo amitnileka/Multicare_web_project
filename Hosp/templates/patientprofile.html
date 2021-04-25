@@ -128,7 +128,7 @@ body{
 
 }
 }
-    
+
 
 
 </style>
@@ -137,8 +137,11 @@ body{
 {% for d in patient_details %}
 <div class="wrapper">
     <div class="left">
-        <img src="{% static 'img/paticon.svg'%}" 
-        alt="user" width="100">
+        {%if d.profileimg %}
+        <img src="{{d.profileimg.url}}" alt="user" width="100">
+{% else %}
+<img src="{%static 'img/default-pic.jpg'%}" alt="gotta" width="100">
+{%endif%}
         <h4>{{ d.name }}</h4>
             <div style="margin-top: 15%;">
              <h5>Phone number</h5>
@@ -173,15 +176,9 @@ body{
             </div>
         </div>
 
-    {% endfor %}  
-      
-        <div class="social_media">
-            <ul>
-              <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-              <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-              <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-          </ul>
-      </div>
+    {% endfor %}
+
+
     </div>
 </div>
 
