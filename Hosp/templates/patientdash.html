@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -342,7 +343,7 @@ label #sidebar_btn:hover{
 
 
 .dropdown .dropbtn {
-  font-size: 16px;  
+  font-size: 16px;
   border: none;
   outline: none;
   color: white;
@@ -360,7 +361,7 @@ label #sidebar_btn:hover{
 
 .dropdown-content {
   display: none;
-  background: #2F323A;  
+  background: #2F323A;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
@@ -508,11 +509,11 @@ label #sidebar_btn:hover{
     display: block;
   }
 }
-</style>  
+</style>
 </head>
   <body>
     {% load static%}
-    
+
     <input type="checkbox" id="check">
     <!--header area start-->
     <div class="navbar">
@@ -527,7 +528,7 @@ label #sidebar_btn:hover{
         <ul>
           <li class="nr_li dd_main">
               <a class="logout_btn">Patient</a>
-      
+
             <div class="dd_menu">
               <div class="dd_left">
                 <ul>
@@ -556,8 +557,13 @@ label #sidebar_btn:hover{
     <!--mobile navigation bar start-->
     <div class="mobile_nav">
       <div class="nav_bar">
-        <img src="{% static 'img/paticon.svg'%}" class="profile_image1" alt="">
         {% for d in patient_details%}
+
+        {%if d.profileimg %}
+        <img src="{{d.profileimg.url}}" class="profile_image1" alt="">
+        {% else %}
+        <img src="{%static 'img/default-pic.jpg'%}" class="profile_image1" alt="gotta">
+        {%endif%}
         <h4 class="profile_name1">{{d.name}}</h4>
         {% endfor %}
 
@@ -569,7 +575,7 @@ label #sidebar_btn:hover{
         <a href="{% url 'makeappointments'%}"><i class="fas fa-table"></i><span>Make Appointment</span></a>
         <a href="{% url 'viewappointments'%}"><i class="fas fa-th"></i><span>View Appointment</span></a>
         <div class="dropdown">
-          <button class="dropbtn">Patient 
+          <button class="dropbtn">Patient
             <i class="fa fa-caret-down"></i>
           </button>
           <div class="dropdown-content">
@@ -580,7 +586,7 @@ label #sidebar_btn:hover{
             <!-- <a href="#">Link 2</a>
             <a href="#">Link 3</a> -->
           </div>
-        </div>       
+        </div>
       </div>
     </div>
     <!--mobile navigation bar end-->
@@ -588,8 +594,12 @@ label #sidebar_btn:hover{
     <div class="sidebar">
       <div class="profile_info">
         <h4 style="color: black;">Paitent Panel</h4>
-        <img src="{% static 'img/paticon.svg'%}" class="profile_image" alt="">
         {% for d in patient_details%}
+        {%if d.profileimg %}
+        <img src="{{d.profileimg.url}}" class="profile_image" alt="">
+{% else %}
+<img src="{%static 'img/default-pic.jpg'%}" class="profile_image" alt="gotta">
+{%endif%}
         <h4>{{d.name}}</h4>
         {% endfor %}
       </div>
@@ -597,9 +607,9 @@ label #sidebar_btn:hover{
       <a href="{% url 'patientprofile'%}"><i class="fas fa-cogs"></i><span>Profile</span></a>
       <a href="{% url 'makeappointments'%}"><i class="fas fa-table"></i><span>Make Appointment</span></a>
       <a href="{% url 'viewappointments'%}"><i class="fas fa-th"></i><span>View Appointment</span></a>
-      
+
     </div>
-    
+
     <!--sidebar end-->
 {% block body_block%}
 <div class="b">
