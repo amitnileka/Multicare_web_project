@@ -39,7 +39,7 @@
                font-weight: 100;
                margin: 20px 0 20px;
            }
-           button{
+           .button{
                width: 140px;
                border: 0;
                padding: 12px 10px;
@@ -247,7 +247,7 @@ footer .container .sec p{
               <div class="col-1">
                   <h2>MAKING <br>HEALTHCARE SIMPLE</h2>
                   <h3>Aboli Hospital Management Services <br> We are always here to help you.</h3>
-                  <button type="button">Make Appointment</button>
+                  <a class="button" href="{% url 'makeappointments'%}">Make Appointment</a>
               </div>
               <div class="col-2">
                   <img src="{%static 'img/bg.png'%}" class="controller">
@@ -258,7 +258,7 @@ footer .container .sec p{
       <div class="container">
         <div class="sec aboutus">
              <h2>Aboli Hospital</h2>
-            <p>
+            <p style="margin-top: 20px;">
               The main motive of this website is to provide a relaible service to our users with guranteed privacy.
               This website holds the detials of the patient to book their appointment.
             </p>
@@ -267,44 +267,44 @@ footer .container .sec p{
               <li><a href=""><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
               <li><a href=""><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
               <li><a href=""><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
-            </ul> 
+            </ul>
         </div>
         <div  class="sec quicklinks">
           <h2>Quick Links</h2>
           <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
+            <li><a href="">Home</a></li>
+            <li><a href="/about">About</a></li>
             <li><a href="#">Terms and Conditions</a></li>
           </ul>
         </div>
         <div  class="sec quicklinks">
           <h2>Connect</h2>
           <ul>
-            <li><a href="#">Login</a></li>
-            <li><a href="#">Sign up</a></li>
+            <li><a href="/login">Login</a></li>
+            <li><a href="/createAcc">Sign up</a></li>
           </ul>
         </div>
 
         <div class="sec contact">
           <h2>Contact us</h2>
           <ul class="info">
-            <li>
+            <li style="margin-top: 20px;">
               <span><i class="fa fa-map-marker" aria-hidden="true"></i></span>
               <span>Shivaji Nagar <br> Parbhani-431401,<br>INDIA.</span>
             </li>
 
-            <li style="margin-top: 70px;">
+            <li style="margin-top: -30px;">
               <span><i class="fa fa-phone" aria-hidden="true"></i></span>
               <p><a href="tel:+12345678900">02452225818</a></p>
             </li>
 
-            <li style="margin-top: -50px;">
+            <li style="margin-top: -30px;">
               <span><i class="fa fa-envelope" aria-hidden="true"></i></span>
               <p><a href="mailto:info@awainspires.com">info@awainspires.com</a></p>
             </li>
           </ul>
         </div>
-        </div>    
+        </div>
     </footer>
 
           <!-- footer End -->
@@ -316,5 +316,5 @@ footer .container .sec p{
       src="https://kit.fontawesome.com/64d58efce2.js"
       crossorigin="anonymous"
     ></script>
-    
+
 {% endblock %}
