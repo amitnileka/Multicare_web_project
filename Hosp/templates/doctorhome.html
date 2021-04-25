@@ -539,7 +539,7 @@ div.b {
               <div class="dd_right">
                 <ul>
                   <li> <a href="{% url 'updateprofile' %}">Update Profile</a></li>
-                  <li> <a href="{% url 'change_password' %}">Change Password</a></li>
+                  <li> <a href="{% url 'change_password_doctor' %}">Change Password</a></li>
                   <li> <a href="{% url 'logoutpg' %}">Logout</a></li>
                 </ul>
               </div>
@@ -557,9 +557,14 @@ div.b {
 
     <div class="mobile_nav">
       <div class="nav_bar">
-        <img src="{% static 'img/paticon.svg'%}" class="profile_image1" alt="">
+
         {% for d in doctor_details%}
-        <h4 class="profile_name1">{{d.name}}</h4>
+        {%if d.profileimg %}
+        <img src="{{d.profileimg.url}}" class="profile_image1" alt="">
+{% else %}
+<img src="{%static 'img/default-pic.jpg'%}" class="profile_image1" alt="gotta">
+{%endif%}
+        <h4 class="profile_name1">DR . {{d.name}}</h4>
         {% endfor %}
 
         <i class="fa fa-bars nav_btn"></i>
@@ -589,9 +594,14 @@ div.b {
     <div class="sidebar">
       <div class="profile_info">
         <h4 style="color: black;">Doctor Panel</h4>
-        <img src="{% static 'img/paticon.svg'%}" class="profile_image" alt="">
         {% for d in doctor_details%}
-        <h4>Dr. Jagdish Seth</h4>
+        {%if d.profileimg %}
+        <img src="{{d.profileimg.url}}" class="profile_image" alt="">
+{% else %}
+<img src="{%static 'img/default-pic.jpg'%}" class="profile_image" alt="gotta">
+{%endif%}
+
+        <h4 class="profile_name1">DR. {{d.name}}</h4>
         {% endfor %}
       </div>
       <a href="{% url 'patientdash'%}"><i class="fas fa-desktop"></i><span>Home</span></a>
