@@ -9,8 +9,8 @@ class Patient(models.Model):
 	repassword = models.CharField(max_length=16)
 	gender = models.CharField(max_length=10)
 	phonenumber = models.CharField(max_length=10)
+	profileimg = models.ImageField(upload_to='profile_image',blank=True)
 
-	
 	bloodgroup = models.CharField(max_length=5)
 
 	def __str__(self):
@@ -18,7 +18,7 @@ class Patient(models.Model):
 
 class Contact(models.Model):
     msg_id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=50)
+    name = models.CharField(max_length=50,default="")
     email = models.CharField(max_length=70, default="")
     phone = models.CharField(max_length=70, default="")
     desc = models.CharField(max_length=500, default="")
@@ -39,6 +39,7 @@ class Doctor(models.Model):
 	birthdate = models.DateField()
 	bloodgroup = models.CharField(max_length=5)
 	specialization = models.CharField(max_length=50)
+	profileimg = models.ImageField(upload_to='profile_image',blank=True)
 
 	def __str__(self):
 		return self.name
@@ -53,7 +54,7 @@ class Appointment(models.Model):
 	appointmenttime = models.TimeField(max_length=10)
 	symptoms = models.CharField(max_length=100)
 	status = models.BooleanField()
-	
+
 	gender = models.CharField(max_length=16,default="Male")
 	def __str__(self):
 		return self.username+" you have appointment with "+self.doctorname
