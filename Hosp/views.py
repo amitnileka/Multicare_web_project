@@ -8,7 +8,7 @@ from django.contrib.auth.views import PasswordChangeView
 from django.http import HttpResponse
 from django.utils import timezone
 from django.urls import reverse_lazy
-from .forms import MedicineForm
+
 from django.core.files.storage import FileSystemStorage
 # Create your views here.
 from django.http import HttpResponse
@@ -158,10 +158,6 @@ class PasswordChangeView(PasswordChangeView):
     template_name = 'registration/change-password.html'
     success_url = reverse_lazy('patientdash')
 
-class PasswordChangeView_doctor(PasswordChangeView):
-    form_class = PasswordChangeForm
-    template_name = 'registration/change-password-doctor.html'
-    success_url = reverse_lazy('patientdash')
 
 def updateprofile(request):
     if not request.user.is_active:
@@ -295,16 +291,7 @@ def viewappointments(request):
             "stu": u,"doctor_details":doctor_details
         }
         return render(request, 'doctorviewapp.html', st)
-def mypresc(request):
-    form = MedicineForm(request.POST or None)
 
-    if form.is_valid():
-        form.save()
-
-    context = {
-        'form':form
-    }
-    return render(request,'mypresc.html',context)
 
 def add_prescrip(request, pid):
     if not request.user.is_active:
