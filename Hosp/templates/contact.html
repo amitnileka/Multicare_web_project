@@ -394,6 +394,7 @@ footer .container .sec h2::before{
 }
 footer .container .sec p{
   color: #fff;
+  padding: 5px;
 }
 .sci{
   margin-top: 20px;
@@ -427,6 +428,7 @@ footer .container .sec p{
 }
 .quicklinks li{
   list-style: none;
+  padding: 10px;
 }
 .quicklinks li a{
   color: #f7f7f7;
@@ -441,6 +443,7 @@ footer .container .sec p{
   display: grid;
   grid-template-columns: 30px 1fr;
   margin-bottom: 50px;
+  padding: 10px;
 }
 .info li span:nth-child(1){
   color: #fff;
@@ -490,15 +493,15 @@ footer .container .sec p{
 {% block body %}
 <div clss="contact">
     <div class="containeer">
-    
-    
+
+
         <div class="form">
           <div class="contact-info">
             <h3 class="title">Let's get in touch</h3>
             <p class="text">
               You can contact us at anytime and please improve us by providing feedback.
             </p>
-    
+
             <div class="info">
               <div class="information">
                 <img src="{% static 'img/location.png'%}" class="icon" alt="" />
@@ -513,7 +516,7 @@ footer .container .sec p{
                 <p>92-23-984-154</p>
               </div>
             </div>
-    
+
             <div class="social-media">
               <p>Connect with us :</p>
               <div class="social-icons">
@@ -532,11 +535,11 @@ footer .container .sec p{
               </div>
             </div>
           </div>
-    
+
           <div class="contact-form">
             <span class="circle one"></span>
             <span class="circle two"></span>
-    
+
             <form action="/contactus/" method="post">{% csrf_token %}
               <h3 class="title">Contact us</h3>
               <div class="input-container">
@@ -580,24 +583,23 @@ footer .container .sec p{
                 <li><a href=""><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
                 <li><a href=""><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
                 <li><a href=""><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
-              </ul> 
+              </ul>
           </div>
           <div  class="sec quicklinks">
             <h2>Quick Links</h2>
             <ul>
-              <li><a href="#">Home</a></li>
-              <li><a href="#">About</a></li>
+              <li><a href="/">Home</a></li>
+              <li><a href="/about">About</a></li>
               <li><a href="#">Terms and Conditions</a></li>
             </ul>
           </div>
           <div  class="sec quicklinks">
             <h2>Connect</h2>
             <ul>
-              <li><a href="#">Login</a></li>
-              <li><a href="#">Sign up</a></li>
+              <li><a href="/login">Login</a></li>
+              <li><a href="/createAcc">Sign up</a></li>
             </ul>
           </div>
-  
           <div class="sec contact">
             <h2>Contact us</h2>
             <ul class="info">
@@ -605,32 +607,32 @@ footer .container .sec p{
                 <span><i class="fa fa-map-marker" aria-hidden="true"></i></span>
                 <span style="margin-left: 0px;">Shivaji Nagar <br> Parbhani-431401,INDIA.</span>
               </li>
-  
+
               <li style="margin-top: -50px;">
                 <span><i class="fa fa-phone" aria-hidden="true"></i></span>
                 <p><a href="tel:+12345678900">02452225818</a></p>
               </li>
-  
+
               <li style="margin-top: -50px;">
                 <span><i class="fa fa-envelope" aria-hidden="true"></i></span>
                 <p><a href="mailto:info@awainspires.com">info@awainspires.com</a></p>
               </li>
             </ul>
           </div>
-          </div>    
+          </div>
       </footer>
-  
+
             <!-- footer End -->
-  
+
         <div class="copyrightText">
          <p> &copy; DBATUCE2020G12 | Designed by The Superlatives</p>
         </div>
-  
 
 
 
 
-  {% block js%} 
+
+  {% block js%}
   <script
   src="https://kit.fontawesome.com/64d58efce2.js"
   crossorigin="anonymous"
