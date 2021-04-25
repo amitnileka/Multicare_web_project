@@ -83,7 +83,7 @@ form .input-box span.details{
    display: flex;
    align-items: center;
    cursor: pointer;
-   
+
  }
  .input-box1
  {
@@ -118,7 +118,7 @@ form .input-box span.details{
  }
  form .button{
    height: 45px;
-   
+
    margin-left: -250px;
  }
  form .button input{
@@ -140,7 +140,7 @@ form .input-box span.details{
   }
   #popup-1 {
 	display: none;
-  
+top: 10px;
 	background-color: rgba(0,0,0,0.5);
 	position: absolute;
 	height: 100%;
@@ -156,6 +156,19 @@ form .input-box span.details{
 	width: 400px;
 
 	top: 5vh;
+}
+
+#close-popup-1
+{
+  width: 140px;
+               border: 0;
+               padding: 12px 10px;
+               outline: none;
+               color: #fff;
+               background: linear-gradient(to right, #fb5283, #ff3527);
+               border-radius: 6px;
+               cursor: pointer;
+               transition: width 0.5s;
 }
  @media(max-width: 584px){
  .container{
@@ -182,6 +195,17 @@ form .input-box span.details{
   .user-details::-webkit-scrollbar{
     width: 5px;
   }
+  .popup-content {
+	position: relative;
+	padding: 20px;
+  margin-top: 150px;
+  margin-left: 80px;
+	background-color: white;
+	width: 300px;
+
+	top: 5vh;
+}
+
   }
   @media(max-width: 459px){
   .container .content .category{
@@ -195,7 +219,7 @@ form .input-box span.details{
 {% endblock %}
 {% block body_block%}
 <div class="container">
- 
+
   <div class="title">Book Appointemnt</div>
   <div class="content">
     <form method="post">
@@ -208,9 +232,10 @@ form .input-box span.details{
             <option value="{{d.name}}">{{d.name}}----->{{d.specialization}}</option>
             {% endfor %}
     </select>
-    
+
         </div>
-        
+
+
         <div class="input-box">
           <span class="details">Name</span>
           <input type="text" placeholder="Enter your username" value="{{user.username}}" name="username" required>
@@ -252,7 +277,7 @@ form .input-box span.details{
           </label>
         </div>
       </div>
-      
+
       <div class="button" id="open-popup-1">
         <input type="submit"  value="Register">
       </div>
@@ -293,5 +318,5 @@ window.location = ("{% url 'makeappointments' %}")
 })
 </script>
 {% endifequal%}
- 
+
 {% endblock %}
