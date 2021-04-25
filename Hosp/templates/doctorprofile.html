@@ -136,8 +136,11 @@ body{
 {% for d in doctor_details %}
 <div class="wrapper">
     <div class="left">
-        <img src="{% static 'img/paticon.svg'%}"
-        alt="user" width="100">
+        {%if d.profileimg %}
+        <img src="{{d.profileimg.url}}"alt="user" width="100">
+{% else %}
+<img src="{%static 'img/default-pic.jpg'%}" alt="user" width="100">
+{%endif%}
         <h4>Dr. {{ d.name }}</h4>
             <div style="margin-top: 15%;">
              <h5>Phone number</h5>
