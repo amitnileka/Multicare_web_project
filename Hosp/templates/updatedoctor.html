@@ -852,7 +852,7 @@ a {
     <!--header area end-->
     <div style="width: 50%;" class="auth-content">
 
-      <form  method="post">
+      <form  method="post" enctype="multipart/form-data">
         {% csrf_token%}
         <h2 class="form-title">Update Profile</h2>
 
@@ -894,6 +894,10 @@ a {
         <div>
           <label>Specialization</label>
           <input type="text" name="specialization" class="text-input" value="{{i.specialization}}">
+        </div>
+        <div>
+          <label">Update Image</label>
+          <input type="file" name="image1" class="text-input"  required >
         </div>
         <div>
           <button type="submit" name="register-btn" class="btn btn-big">Save</button>
