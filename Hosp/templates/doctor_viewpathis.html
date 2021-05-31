@@ -5,83 +5,56 @@
 {% endblock%}
 {% block css %}
 <style>
-
-.table-box
-{
-    margin: 50px auto;
-}
-
-.table-row{
-    display: table;
+  .data
+  {
+    margin-bottom: 15%;
+  }
+  table {
     width: 90%;
-    margin: 10px auto;
-    font-family: sans-serif;
-    background: transparent;
-    padding: 12px 0;
-    color: #555;
-    font-size: 13px;
-    box-shadow: 0 1px 4px 0px rgba(0,0,50,0.3);
-}
-.table-head{
-    background: #8665f7;
-    box-shadow: none;
-    color: #fff;
-    font-weight: 600;
-}
-.table-head .table-cell{
-    border-right: none;
-}
-.table-cell{
+    margin-left: 37px;
+    margin: 50px auto;
+  }
+
+  .table-cell {
     display: table-cell;
     width: 15%;
     text-align: center;
     padding: 4px 0;
     border-right: 1px solid #d6d4d4;
     vertical-align: middle;
-}
-.first-cell{
+  }
+
+  .first-cell {
     text-align: left;
     padding-left: 10px;
-}
-.last-cell{
-    border-right: none;
-}
-a{
+  }
+
+  td,
+  th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+
+  .pres:link,
+  .pres:visited {
+    background-color: #90EE90;
+    color: white;
+    padding: 14px 10px;
+    text-align: center;
     text-decoration: none;
-    color: #555;
-}
-
-div.b{
-      margin-left: 0px;
-      margin-top: 30px;
-      color:gray;
+    display: inline-block;
   }
 
-
-.pres:link, .pres:visited {
-  background-color: #90EE90;
-  color: white;
-  padding: 14px 10px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-}
-
-.pres:hover, .pres:active {
-  background-color: darkgreen;
-}
-
-
-@media only screen and (max-width: 600px) {
-  .table-row {
-    font-size: 11px;
+  .pres:hover,
+  .pres:active {
+    background-color: darkgreen;
   }
-  .table-box{
-    overflow-x: scroll;
-
-  }
-}
-    </style>{% endblock %}
+</style>{% endblock %}
 {% block body_block%}
 
 <div class="content">
@@ -89,97 +62,50 @@ div.b{
     <div class="b">
       <h1>USER | VIEW APPOINTMENT HISTORY</h1>
       <hr style="height: 3px; border-width: 0; color: gray; background-color: gray; margin-right: 30px;">
-  </div>
-  <div class="table-box">
-    <div class="table-row table-head">
-        <div class="table-cell first-cell">
-            <p>Doctor Name</p>
-        </div>
-        <div class="table-cell">
-            <p>Patient Gender</p>
-        </div>
-        <div class="table-cell">
-          <p>Appointment Date</p>
-        </div>
-        <div class="table-cell">
-         <p>Appointemnt Time</p>
-        </div>
-        <div class="table-cell">
-          <p>Symptoms</p>
-        </div>
-        <div class="table-cell last-cell">
-          <p>Status</p>
-        </div>
-        <div class="table-cell">
-         <p>Prescription</p>
-        </div>
     </div>
+    <div class="data">
+    <table id="example">
+      <thead>
+      <tr>
+        <th class="table-cell first-cell">Patient Name</th>
+        <th class="table-cell">Patient Gender</th>
+        <th class="table-cell">Appointemnt Date</th>
+        <th class="table-cell">Appointemnt Time</th>
+        <th class="table-cell">Stmptoms</th>
+        <th class="table-cell">Status</th>
+        <th class="table-cell">Prescription</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for i in stu %}
 
+      <tr>
+        <td class="table-cell">{{i.username}}</td>
+        <td class="table-cell">{{i.gender}}</td>
+        <td class="table-cell">{{i.appointmentdate}}</td>
+        <td class="table-cell">{{i.appointmenttime}}</td>
+        <td class="table-cell">{{i.symptoms}}</td>
+        <td class="table-cell">{{i.status}}</td>
+        <td class="table-cell"><a href="{% url 'view_prescrip' i.id %}" class="pres"> View Prescription</a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
 
-  <!-- <div class="Abody">
-      <div class="Abody_A1">
-          <table class="content-table">
-              <thead>
-                <tr>
-                  <th>Doctor Name</th>
-                  <th>Patient Gender</th>
-                  <th>Appointment Date</th>
-                  <th>Appointemnt Time</th>
-                  <th>Symptoms</th>
-                  <th>Status</th>
-                  <th>Action</th>
-                </tr>
-              </thead> -->
-              <!-- <tbody> -->
-                  {% for i in stu %}
-
-                  <div class="table-row">
-                    <div class="table-cell first-cell">
-                        <p>{{i.username}}</p>
-                    </div>
-                    <div class="table-cell">
-                        <p>{{i.gender}}</p>
-                    </div>
-                    <div class="table-cell">
-                        <p>{{i.appointmentdate}}</p>
-                    </div>
-                    <div class="table-cell">
-                        <p>{{i.appointmenttime}}</p>
-                    </div>
-                    <div class="table-cell">
-                        <p>{{i.symptoms}}</p>
-                    </div>
-                    <div class="table-cell">
-                        <p>{{i.status}}</p>
-                    </div>
-
-                    <div class="table-cell last-cell">
-                      <a href="{% url 'view_prescrip' i.id %}" class="pres"> View Prescription</a>
-                    </div>
-                </div>
-
-
-                <!-- <tr>
-                  <td>{{i.doctorname}}</td>
-                  <td>{{i.gender}}</td>
-                  <td>{{i.appointmentdate}}</td>
-                  <td>{{i.appointmenttime}}</td>
-                  <td>{{i.symptoms}}</td>
-                  <td>{{i.status}}</td>
-                  <td><a href="{% url 'patient_delete_appointment' i.id %} " onclick="return confirm('Are you sure you want to delete?')" class="btn btn-danger pres">Delete</a></td>
-              </tr> -->
-                {% endfor %}
-              </tbody>
-            </table>
-      </div>
+    </table>
   </div>
   </div>
 </div>
 
 
+
 {% endblock %}
 
 {% block js%}
+<script
+src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- Ckeditor -->
+<script
+src="https://cdn.ckeditor.com/ckeditor5/12.2.0/classic/ckeditor.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.10.23/af-2.3.5/b-1.6.5/b-colvis-1.6.5/b-html5-1.6.5/b-print-1.6.5/cr-1.5.3/fc-3.3.2/kt-2.6.1/r-2.2.7/rg-1.1.2/rr-1.2.7/sl-1.3.1/datatables.min.css"/>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
@@ -188,7 +114,7 @@ div.b{
 
 <script>
   $(document).ready( function () {
-  $('#table_id').DataTable({
+  $('#example').DataTable({
 
   dom: 'B<"clear">lfrtip',
   buttons: {
@@ -200,5 +126,4 @@ div.b{
 } );
 </script>
 
-
-{% endblock%}
+{% endblock %}
