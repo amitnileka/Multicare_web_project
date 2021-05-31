@@ -146,6 +146,14 @@ top: 10px;
 	height: 100%;
 	width: 100%;
 }
+#popup-2 {
+	display: none;
+top: 10px;
+	background-color: rgba(0,0,0,0.5);
+	position: absolute;
+	height: 100%;
+	width: 100%;
+}
 
 .popup-content {
 	position: relative;
@@ -159,6 +167,19 @@ top: 10px;
 }
 
 #close-popup-1
+{
+  width: 140px;
+               border: 0;
+               padding: 12px 10px;
+               outline: none;
+               color: #fff;
+               background: linear-gradient(to right, #fb5283, #ff3527);
+               border-radius: 6px;
+               cursor: pointer;
+               transition: width 0.5s;
+}
+
+#close-popup-2
 {
   width: 140px;
                border: 0;
@@ -293,11 +314,28 @@ top: 10px;
 		<button id="close-popup-1">Close</button>
 	</div>
 </div>
+
+<div id="popup-2">
+	<div class="popup-content">
+	<h2>Thanks You for booking in hospital.</h2>
+		<p>
+      Appointemnt booked Succesfully. You can now visit hospital.
+    </p>
+		<button id="close-popup-2">Close</button>
+	</div>
+</div>
 {% ifequal error "no"  %}
 
 <script type="text/javascript">
+var popup2 = document.getElementById("popup-2")
+var openPopup1 = document.getElementById("open-popup-1")
+var closePopup2 = document.getElementById('close-popup-2')
+popup2.style.display = "block";
 
+closePopup2.addEventListener('click', () => {
+popup2.style.display = "none";
 window.location = ("{% url 'makeappointments' %}")
+})
 </script>
 
 {% endifequal%}
