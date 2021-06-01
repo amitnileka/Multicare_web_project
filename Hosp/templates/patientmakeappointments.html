@@ -44,7 +44,6 @@
     flex-wrap: wrap;
     justify-content: space-between;
     margin: 0px 0 0px 0;
-    margin-left: -250px;
   }
 
   form .user-details .input-box {
@@ -78,7 +77,6 @@
   form .gender-details .gender-title {
     font-size: 20px;
     font-weight: 500;
-    margin-left: -250px;
   }
 
   form .category {
@@ -86,14 +84,13 @@
     width: 80%;
     margin: 14px 0;
     justify-content: space-between;
-    margin-left: -250px;
   }
 
   form .category label {
     display: flex;
     align-items: center;
     cursor: pointer;
-
+    padding: 10px;
   }
 
   .input-box1 {
@@ -132,8 +129,6 @@
 
   form .button {
     height: 45px;
-
-    margin-left: -250px;
   }
 
   form .button input {
@@ -208,11 +203,23 @@
     transition: width 0.5s;
   }
 
+  .content form .user-details {
+    margin-top: 20px;
+  }
+
   @media(max-width: 584px) {
     .container {
       width: 100%;
       max-width: 100%;
       box-shadow: none;
+      padding: 0;
+      margin-left: 0;
+    }
+    .content{
+      margin-left: -250px;
+    }
+    .user-details{
+      margin-left: 0;
     }
 
     .title {
@@ -233,6 +240,22 @@
       max-height: 300px;
       overflow-x: scroll;
       width: 300px;
+      margin-left: 300px;
+      margin-top: 20px;
+    }
+    .container .title {
+      margin-left: 50px;
+    }
+
+    .gender-details {
+      margin-left: 300px;
+    }
+    form .button{
+      padding-bottom: 50px;
+    }
+    form .button input {
+      margin-left: 300px;
+      width: 40%;
     }
 
     .user-details::-webkit-scrollbar {
@@ -264,70 +287,67 @@
 {% endblock %}
 {% block body_block%}
 <div class="container">
+    <div class="title">Book Appointemnt</div>
+    <div class="content">
+      <form method="post">
+        {% csrf_token %}
+        <div class="user-details">
+          <div class="input-box">
+            <span class="details">Doctor's Name and Field</span>
+            <select class="input-box1" name="doctorname">
+              {% for d in alldoctors %}
+              <option value="{{d.name}}">{{d.name}}----->{{d.specialization}}</option>
+              {% endfor %}
+            </select>
 
-  <div class="title">Book Appointemnt</div>
-  <div class="content">
-    <form method="post">
-      {% csrf_token %}
-      <div class="user-details">
-        <div class="input-box">
-          <span class="details">Doctor's Name and Field</span>
-          <select class="input-box1" name="doctorname">
-            {% for d in alldoctors %}
-            <option value="{{d.name}}">{{d.name}}----->{{d.specialization}}</option>
-            {% endfor %}
-          </select>
-
+          </div>
+          <div class="input-box">
+            <span class="details">Name</span>
+            <input type="text" placeholder="Enter your username" value="{{user.username}}" name="username" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Email</span>
+            <input type="text" placeholder="Enter your email" value="{{user.email}}" name="patientemail" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Appointemnt Date</span>
+            <input class="form-control" type="date" name="appointmentdate" required="">
+          </div>
+          <div class="input-box">
+            <span class="details">Appointemnt Time</span>
+            <input class="form-control" type="time" placeholder="enter time" name="appointmenttime" required="">
+          </div>
+          <div class="input-box">
+            <span class="details">Symptoms</span>
+            <input type="text" name="symptoms" required>
+          </div>
+        </div>
+        <div class="gender-details">
+          <input type="radio" name="gender" id="dot-1" value="Male">
+          <input type="radio" name="gender" id="dot-2" value="Female">
+          <input type="radio" name="gender" id="dot-3" value="Prefer Not To Say">
+          <span class="gender-title">Gender</span>
+          <div class="category">
+            <label for="dot-1">
+              <span class="dot one"></span>
+              <span class="gender">Male</span>
+            </label>
+            <label for="dot-2">
+              <span class="dot two"></span>
+              <span class="gender">Female</span>
+            </label>
+            <label for="dot-3">
+              <span class="dot three"></span>
+              <span class="gender">Prefer not to say</span>
+            </label>
+          </div>
         </div>
 
-
-        <div class="input-box">
-          <span class="details">Name</span>
-          <input type="text" placeholder="Enter your username" value="{{user.username}}" name="username" required>
+        <div class="button" id="open-popup-1">
+          <input type="submit" value="Register">
         </div>
-        <div class="input-box">
-          <span class="details">Email</span>
-          <input type="text" placeholder="Enter your email" value="{{user.email}}" name="patientemail" required>
-        </div>
-        <div class="input-box">
-          <span class="details">Appointemnt Date</span>
-          <input class="form-control" type="date" name="appointmentdate" required="">
-        </div>
-        <div class="input-box">
-          <span class="details">Appointemnt Time</span>
-          <input class="form-control" type="time" placeholder="enter time" name="appointmenttime" required="">
-        </div>
-        <div class="input-box">
-          <span class="details">Symptoms</span>
-          <input type="text" name="symptoms" required>
-        </div>
-      </div>
-      <div class="gender-details">
-        <input type="radio" name="gender" id="dot-1" value="Male">
-        <input type="radio" name="gender" id="dot-2" value="Female">
-        <input type="radio" name="gender" id="dot-3" value="Prefer Not To Say">
-        <span class="gender-title">Gender</span>
-        <div class="category">
-          <label for="dot-1">
-            <span class="dot one"></span>
-            <span class="gender">Male</span>
-          </label>
-          <label for="dot-2">
-            <span class="dot two"></span>
-            <span class="gender">Female</span>
-          </label>
-          <label for="dot-3">
-            <span class="dot three"></span>
-            <span class="gender">Prefer not to say</span>
-          </label>
-        </div>
-      </div>
-
-      <div class="button" id="open-popup-1">
-        <input type="submit" value="Register">
-      </div>
-    </form>
-  </div>
+      </form>
+    </div>
 </div>
 <div id="popup-1">
   <div class="popup-content">
