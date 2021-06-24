@@ -314,9 +314,13 @@
             <input class="form-control" type="date" name="appointmentdate" required="">
           </div>
           <div class="input-box">
-            <span class="details">Appointemnt Time</span>
-            <input class="form-control" type="time" placeholder="enter time" name="appointmenttime" required="">
-          </div>
+          <span class="details">Appointemnt Time</span>
+          <!--<input class="form-control" type="time" placeholder="enter time" name="appointmenttime" required="">-->
+          <select name="appointmenttime" placeholder="enter time" class="input-box1" required="">
+            <option value="10 AM - 01 PM">10 AM - 01 PM</option>
+            <option value="04 PM - 07 PM">04 PM - 07 PM</option>
+          </select>
+        </div>
           <div class="input-box">
             <span class="details">Symptoms</span>
             <input type="text" name="symptoms" required>
