@@ -247,7 +247,7 @@ def MakeAppointments(request):
             symptoms = request.POST['symptoms']
             gender = request.POST['gender']
             a = Appointment.objects.filter(
-                appointmentdate=appointmentdate).count()
+                appointmentdate=appointmentdate,appointmenttime=appointmenttime).count()
             print(a)
             if a <= 1:
 
@@ -260,6 +260,7 @@ def MakeAppointments(request):
                     print(ex)
             else:
                 error = "yes"
+                print(error)
 
             e = {"error": error, "patient_details": patient_details}
 
