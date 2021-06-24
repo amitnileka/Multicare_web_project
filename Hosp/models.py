@@ -51,13 +51,14 @@ class Appointment(models.Model):
 	username = models.CharField(max_length=50)
 	patientemail = models.EmailField(max_length=50)
 	appointmentdate = models.DateField(max_length=10)
-	appointmenttime = models.TimeField(max_length=10)
+	appointmenttime = models.CharField(max_length=10)
 	symptoms = models.CharField(max_length=100)
 	status = models.BooleanField()
 
 	gender = models.CharField(max_length=16,default="Male")
 	def __str__(self):
 		return self.username+" you have appointment with "+self.doctorname
+
 
 
 
