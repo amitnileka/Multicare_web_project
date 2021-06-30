@@ -129,4 +129,4 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 LOGIN_URL = '/Multicare/login'
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
