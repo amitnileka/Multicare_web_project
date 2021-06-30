@@ -1,6 +1,6 @@
 {% extends 'adminDash.html' %}
 {% load static %}
-{% block title%} view Doctor{% endblock %}
+{% block title%} view Appointments{% endblock %}
 {% block css %}
 <style>
   /* admin css*/
@@ -822,7 +822,7 @@
 
       <div class="table-row">
         <div class="table-cell first-cell">
-          <p>{{ i.doctorname }}</p>
+          <p>DR {{ i.doctorname }}</p>
         </div>
         <div class="table-cell">
           <p>{{ i.username }}</p>
