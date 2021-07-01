@@ -514,3 +514,11 @@ def adminappointment(request):
         appointmentdate__gte=timezone.now(), status=True).order_by('appointmentdate')
     d = {'appoin': appoin}
     return render(request, 'adminappointment.html', d)
+
+def admin_delete_appointment(request, pid):
+    if not request.user.is_active:
+        return redirect('login')
+    appointment = Appointment.objects.get(id=pid)
+    appointment.delete()
+    return redirect('adminappointment')
+
